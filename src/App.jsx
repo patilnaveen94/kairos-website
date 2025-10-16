@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import ScrollRestoration from './components/ScrollRestoration';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -12,6 +14,7 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <Router>
+      <ScrollRestoration />
       <div className="min-h-screen bg-white">
         <Navbar />
         <Routes>
@@ -24,6 +27,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
+        <ScrollToTop />
       </div>
     </Router>
   );

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Users } from 'lucide-react';
 import { useState } from 'react';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const TrainingNetwork = () => {
   const [formData, setFormData] = useState({
@@ -107,7 +108,9 @@ const TrainingNetwork = () => {
               className="bg-white p-8 rounded-lg shadow-md"
             >
               <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-              <div className="text-3xl font-bold text-primary mb-2">25+</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                <AnimatedCounter end="25" suffix="+" />
+              </div>
               <div className="text-gray-600">Training Centers</div>
             </motion.div>
             <motion.div
@@ -117,7 +120,9 @@ const TrainingNetwork = () => {
               className="bg-white p-8 rounded-lg shadow-md"
             >
               <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-              <div className="text-3xl font-bold text-primary mb-2">15+</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                <AnimatedCounter end="15" suffix="+" />
+              </div>
               <div className="text-gray-600">Cities Covered</div>
             </motion.div>
             <motion.div
@@ -127,7 +132,9 @@ const TrainingNetwork = () => {
               className="bg-white p-8 rounded-lg shadow-md"
             >
               <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
-              <div className="text-3xl font-bold text-primary mb-2">50+</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                <AnimatedCounter end="50" suffix="+" />
+              </div>
               <div className="text-gray-600">Training Programs</div>
             </motion.div>
           </div>

@@ -158,10 +158,14 @@ const About = () => {
           </motion.div>
           
           <div className="relative">
-            {/* Modern Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-gold to-primary h-full rounded-full shadow-lg"></div>
+            {/* Modern Timeline Line - Desktop Only */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-gold to-primary h-full rounded-full shadow-lg"></div>
             
-            <div className="space-y-12">
+            {/* Mobile Timeline Line */}
+            <div className="md:hidden absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-gold to-primary h-full rounded-full shadow-lg"></div>
+            
+            {/* Desktop Timeline */}
+            <div className="hidden md:block space-y-12">
               {timeline.map((item, index) => (
                 <motion.div
                   key={item.year}
@@ -175,28 +179,60 @@ const About = () => {
                       whileHover={{ scale: 1.02, y: -5 }}
                       className={`bg-white border border-gray-200 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}
                     >
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="bg-gradient-to-r from-primary to-blue-600 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg">
-                          {item.year}
-                        </div>
-                        <div className="h-px bg-gradient-to-r from-primary/50 to-transparent flex-1"></div>
-                      </div>
                       <p className="text-gray-700 text-lg leading-relaxed font-medium">{item.event}</p>
                     </motion.div>
                   </div>
                   
-                  {/* Enhanced Timeline Dot */}
+                  {/* Year Badge on Timeline */}
                   <motion.div 
                     initial={{ scale: 0, rotate: 180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.15 + 0.4 }}
-                    className="relative z-20"
+                    className="relative z-20 flex items-center justify-center w-20 h-20"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
-                      <div className="w-6 h-6 bg-gold rounded-full animate-pulse shadow-lg"></div>
+                    <div className="bg-gradient-to-br from-primary to-blue-600 text-white px-3 py-2 rounded-2xl font-bold text-base shadow-2xl border-4 border-white w-16 h-16 flex items-center justify-center">
+                      {item.year}
                     </div>
                     {/* Glow Effect */}
-                    <div className="absolute inset-0 w-16 h-16 bg-primary/30 rounded-full animate-ping"></div>
+                    <div className="absolute inset-2 bg-primary/30 rounded-2xl animate-pulse"></div>
+                  </motion.div>
+                  
+                  <div className="flex-1"></div>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Mobile Timeline */}
+            <div className="md:hidden space-y-8">
+              {timeline.map((item, index) => (
+                <motion.div
+                  key={item.year}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                >
+                  <div className="flex-1">
+                    <motion.div 
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      className={`bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}
+                    >
+                      <p className="text-gray-700 text-base leading-relaxed font-medium">{item.event}</p>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Year Badge for Mobile */}
+                  <motion.div 
+                    initial={{ scale: 0, rotate: 180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
+                    className="relative z-20 flex items-center justify-center w-16 h-16"
+                  >
+                    <div className="bg-gradient-to-br from-primary to-blue-600 text-white px-2 py-1 rounded-xl font-bold text-xs shadow-xl border-2 border-white w-12 h-12 flex items-center justify-center">
+                      {item.year}
+                    </div>
+                    {/* Glow Effect */}
+                    <div className="absolute inset-1 bg-primary/30 rounded-xl animate-pulse"></div>
                   </motion.div>
                   
                   <div className="flex-1"></div>
