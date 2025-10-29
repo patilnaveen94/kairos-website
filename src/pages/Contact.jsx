@@ -1,234 +1,269 @@
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Facebook, Linkedin, Instagram, Twitter } from 'lucide-react';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Twitter,
+} from "lucide-react";
+import { useState } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    alert("Thank you for your message! We will get back to you soon.");
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Corporate Office',
+      title: "Corporate Office",
       details: [
-        'KAIROS Integrated Solutions Pvt. Ltd.',
-        'Electronic City, Bangalore',
-        'Karnataka, India - 560100'
-      ]
+        "KAIROS Integrated Solutions Pvt. Ltd.",
+        "#52/2, Raja Nivas, Central Street, Kumara Park West, Bengaluru",
+        "Karnataka, India - 560020",
+      ],
     },
-    {
-      icon: Phone,
-      title: 'Phone',
-      details: [
-        '+91 80 1234 5678',
-        '+91 80 8765 4321',
-        'Toll Free: 1800 123 4567'
-      ]
-    },
+    { icon: Phone, title: "Phone", details: ["9845129067"] },
     {
       icon: Mail,
-      title: 'Email',
-      details: [
-        'info@kairosintegrated.com',
-        'partnerships@kairosintegrated.com',
-        'careers@kairosintegrated.com'
-      ]
+      title: "Email",
+      details: ["kairosintegratedsolutions@gmail.com"],
     },
     {
       icon: Clock,
-      title: 'Business Hours',
+      title: "Business Hours",
       details: [
-        'Monday - Friday: 9:00 AM - 6:00 PM',
-        'Saturday: 9:00 AM - 2:00 PM',
-        'Sunday: Closed'
-      ]
-    }
+        "Mon - Fri: 9:00 AM - 6:00 PM",
+        "Saturday: 9:00 AM - 2:00 PM",
+        "Sunday: Closed",
+      ],
+    },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Twitter, href: '#', label: 'Twitter' }
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Twitter, href: "#", label: "Twitter" },
   ];
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="bg-primary text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-primary via-blue-700 to-blue-900 text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
           >
-            <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl max-w-3xl mx-auto">
-              Ready to partner with us or learn more about our programs? 
-              We'd love to hear from you.
+            <h1 className="text-6xl font-bold mb-6">Get In Touch</h1>
+            <div className="w-32 h-1 bg-gold mx-auto mb-8"></div>
+            <p className="text-xl max-w-3xl mx-auto text-gray-200 leading-relaxed">
+              Ready to transform lives through skill development? Let's collaborate to build a skilled and empowered India.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Information */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Connect With Us</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Multiple ways to reach out and start your journey with KAIROS
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.1, type: "spring", bounce: 0.4 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center group"
               >
-                <info.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-4">{info.title}</h3>
-                <div className="space-y-2">
-                  {info.details.map((detail, idx) => (
-                    <p key={idx} className="text-gray-600">{detail}</p>
-                  ))}
+                <div className="bg-gradient-to-br from-primary to-blue-600 w-20 h-20 flex items-center justify-center rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <info.icon className="w-10 h-10 text-white" />
                 </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{info.title}</h3>
+                {info.details.map((d, i) => (
+                  <p key={i} className="text-gray-600 leading-relaxed mb-1">
+                    {d}
+                  </p>
+                ))}
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Map */}
-      <section className="py-16 bg-gray-50">
+      {/* Form & Map Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: -100, rotateY: -15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              transition={{ duration: 1, type: "spring", bounce: 0.3 }}
+              className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-10 shadow-2xl"
             >
-              <h2 className="text-3xl font-bold mb-8">Send us a Message</h2>
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Send us a Message</h2>
+                <div className="w-16 h-1 bg-primary mx-auto mb-4"></div>
+                <p className="text-gray-600">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+              </div>
+              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Full Name *
                     </label>
                     <input
                       type="text"
-                      id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white"
+                      placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Email Address *
                     </label>
                     <input
                       type="email"
-                      id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white"
+                      placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Subject *
                   </label>
                   <input
                     type="text"
-                    id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white"
+                    placeholder="What's this about?"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Message *
                   </label>
                   <textarea
-                    id="message"
                     name="message"
+                    rows={6}
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="Tell us about your inquiry, partnership interest, or how we can help you..."
+                    className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white resize-none"
+                    placeholder="Tell us how we can help you..."
                   ></textarea>
                 </div>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  className="w-full bg-gradient-to-r from-primary to-blue-600 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
                 >
                   Send Message
-                </button>
+                </motion.button>
               </form>
             </motion.div>
 
-            {/* Map */}
+            {/* Map & Company Info */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: 100, rotateY: 15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              transition={{ duration: 1, delay: 0.3, type: "spring", bounce: 0.3 }}
+              className="space-y-8"
             >
-              <h2 className="text-3xl font-bold mb-8">Find Us</h2>
-              <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center mb-8">
-                <span className="text-gray-500">Google Maps Embed</span>
+              <div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">Visit Our Office</h2>
+                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.150069066418!2d77.57336467507514!3d13.00579618730243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16cf52a9a13f%3A0xaaa!2sKumara%20Park%20West%2C%20Bengaluru!5e0!3m2!1sen!2sin!4v1729529000000!5m2!1sen!2sin"
+                    width="100%"
+                    height="400"
+                    loading="lazy"
+                    className="border-0 w-full"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
-              
-              {/* Company Details */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-4">KAIROS Integrated Solutions Pvt. Ltd.</h3>
-                <p className="text-gray-600 mb-2">CIN: U74999KA2016PTC097038</p>
-                <p className="text-gray-600 mb-4">Registered Office: Karnataka, India</p>
-                <p className="text-gray-600 mb-6">
-                  A leading skill development organization committed to empowering India's youth 
-                  through quality training and placement support.
+
+              <div className="bg-gradient-to-br from-primary to-blue-600 p-8 rounded-3xl text-white shadow-2xl">
+                <h3 className="text-2xl font-bold mb-4">
+                  KAIROS Integrated Solutions Pvt. Ltd.
+                </h3>
+                <p className="text-blue-100 mb-2 font-medium">CIN: U74999KA2016PTC097038</p>
+                <p className="text-blue-100 mb-6">Registered Office: Karnataka, India</p>
+                <p className="text-blue-50 mb-8 leading-relaxed">
+                  A leading skill development organization empowering India's youth through innovative training programs, strategic partnerships, and sustainable employment solutions.
                 </p>
                 
-                {/* Social Media Links */}
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
-                      aria-label={social.label}
-                    >
-                      <social.icon size={20} />
-                    </a>
-                  ))}
+                <div className="border-t border-blue-400 pt-6">
+                  <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+                  <div className="flex space-x-4">
+                    {socialLinks.map((social) => (
+                      <motion.a
+                        key={social.label}
+                        href={social.href}
+                        whileHover={{ scale: 1.2, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-xl flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+                        aria-label={social.label}
+                      >
+                        <social.icon size={22} />
+                      </motion.a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -236,35 +271,45 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Quick Contact */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-xl mb-8">
-              Whether you're looking to partner with us, join our training programs, 
-              or explore collaboration opportunities, we're here to help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+918012345678"
-                className="bg-gold text-primary px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors"
-              >
-                Call Now
-              </a>
-              <a
-                href="mailto:info@kairosintegrated.com"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
-              >
-                Email Us
-              </a>
-            </div>
-          </motion.div>
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-gray-900 via-primary to-blue-900 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-gold/5 to-transparent transform -skew-y-3"></div>
         </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
+          <h2 className="text-5xl font-bold mb-6">Ready to Transform Lives?</h2>
+          <div className="w-32 h-1 bg-gold mx-auto mb-8"></div>
+          <p className="text-xl mb-12 text-gray-200 leading-relaxed max-w-3xl mx-auto">
+            Whether you want to partner with us, join our training programs, explore government collaborations, or contribute to CSR initiatives — let's create lasting impact together.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <motion.a
+              href="tel:+919845129067"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gold text-primary px-10 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:bg-yellow-400 transition-all duration-300 inline-flex items-center justify-center gap-3"
+            >
+              <Phone size={20} />
+              Call Now
+            </motion.a>
+            <motion.a
+              href="mailto:kairosintegratedsolutions@gmail.com"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-gold text-gold px-10 py-4 rounded-2xl font-bold text-lg hover:bg-gold hover:text-primary transition-all duration-300 inline-flex items-center justify-center gap-3"
+            >
+              <Mail size={20} />
+              Email Us
+            </motion.a>
+          </div>
+        </motion.div>
       </section>
     </div>
   );

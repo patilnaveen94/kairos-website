@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-xl fixed w-full z-50 border-b border-gray-100">
+    <nav className="bg-white shadow-xl fixed w-full z-[99999] border-b border-gray-100 top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
@@ -59,7 +59,8 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-primary"
+              className="text-gray-900 hover:text-primary p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 relative z-[99999] bg-white shadow-sm border border-gray-200"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -68,8 +69,8 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-4 pt-4 pb-6 space-y-2 bg-white/95 backdrop-blur-md shadow-2xl border-t border-gray-100">
+        <div className="md:hidden absolute top-full left-0 w-full z-[9998] bg-white/95 backdrop-blur-md">
+          <div className="px-4 pt-4 pb-6 space-y-2 shadow-2xl border-t border-gray-100">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
